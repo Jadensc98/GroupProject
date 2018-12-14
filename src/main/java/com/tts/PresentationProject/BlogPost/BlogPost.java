@@ -20,6 +20,12 @@ public BlogPost() {
 	
 }
 
+public BlogPost(String name, String where, String story) {
+	this.name = name;
+	this.where = where;
+	this.story = story;
+}
+
 
 public String getName() {
 	return name;
