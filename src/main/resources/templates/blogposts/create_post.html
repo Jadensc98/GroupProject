@@ -1,0 +1,40 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Create Your Own Blog  </title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+ <body>
+   <h1>Welcome Traveler</h1>
+   <h3>Please Write Your Blogs Below</h3>
+   
+   <p>Please Use The Form Below To Write The Blogs </p>
+   <form action="#" th:action="@{/createblog}" th:object="${travelBlogPost}" method="post">
+   		<table>
+     		<tr>
+         		<td>Name:</td>
+         		<td><input type="text" th:field="*{name}" /></td>
+         		</tr>
+         	<tr>
+         	    <td>Place:</td>
+         	    <td><input type="text" th:field="*{place}" /></td>
+         	</tr>
+         	<tr>
+         	    <td>Story:</td>
+         	    <td><input type="text" th:field="*{story}" /></td>
+         	</tr>
+         	
+         	
+         	    <td><button type="submit">Submit your Information</button></td>
+         	    
+         	</tr>    
+      	        	                     	
+      	
+   
+   </table>
+   </form>
+
+
+ </body>
+</html>
