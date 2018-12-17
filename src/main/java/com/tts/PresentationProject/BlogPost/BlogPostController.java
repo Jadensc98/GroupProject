@@ -22,14 +22,14 @@ public class BlogPostController {
 	
 	//introduction page 
 		@GetMapping("/")
-		public ModelAndView index(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/index");
+		public ModelAndView index() {
+			ModelAndView mv = new ModelAndView("blogposts/index.html");
 			return mv;
 		}
 		
 		@GetMapping("/posts")
 		public ModelAndView posts(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/posts");
+			ModelAndView mv = new ModelAndView("blogposts/posts.html");
 			return mv;
 		}
 		
