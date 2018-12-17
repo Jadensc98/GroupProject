@@ -24,7 +24,6 @@ public class BlogPostController {
 		@GetMapping("/")
 		public ModelAndView index(BlogPost blogPost) {
 			ModelAndView mv = new ModelAndView("blogposts/index");
-			mv.addObject("blogPosts", blogPostRepository.findAll());
 			return mv;
 		}
 		
