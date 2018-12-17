@@ -11,22 +11,31 @@
 	<p>Please Use The Form Below To Create An Account</p>
 
 	<div class="container">
-		<h1>Create a New Blog Post</h1>
- 		<form action="#" th:action="@{/blog_posts/newpost}" th:object="${blogPost}" method="post">
+		<h1>Create a New Account</h1>
+ 		<form action="#" th:action="@{/blogposts/newuser}" th:object="${user}" method="post">
  		
  		<div class="form-group">
- 			<input type="text" class="form-control" placeholder="Your name" th:field="*{name}" />
+ 			<input type="text" class="form-control" placeholder="Your First Name" th:field="*{firstName}" />
  		</div>
  		
  		<div class="form-group">
- 			<input type="text" class="form-control" placeholder="Where was this?" th:field="*{where}" />
+ 			<input type="text" class="form-control" placeholder="Your Last Name" th:field="*{lastName}" />
  		</div>
  		
  		<div class="form-group">
- 			<input type="text" class ="form-control" placeholder="Tell us the story!" th:field="*{story}" />
+ 			<input type="text" class ="form-control" placeholder="UserName" th:field="*{userName}" />
+ 		</div>
+ 		<div class="form-group">
+ 			<input type="password" class ="form-control" placeholder="Password" th:field="*{password}" />
+ 		</div>
+ 		<div class="form-group">
+ 			<input type="text" class ="form-control" placeholder="Email" th:field="*{email}" />
+ 		</div>
+ 		<div class="form-group">
+ 			<input type="text" class ="form-control" placeholder="Date Of Creation" th:field="*{updateDttm}" />
  		</div>
 		</form>
- 		<button class="btn btn-primary">Submit Your Post</button>
+ 		<button class="btn btn-primary">Submit Your Information</button>
 
 		<a class= "btn btn-primary" th:href="@{/}">Back To Homepage</a>
 	</div>
