@@ -1,0 +1,28 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Traveler Information</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome</h1>
+	<h3>Here is the information We know about
+		you:</h3>
+
+	<p>
+		First Name: <span th:text="${firstName}"></span>
+	</p>
+	<p>
+		Last Name: <span th:text="${lastName}"></span>
+	</p>
+	<p>
+		Email: <span th:text="${email}"></span>
+	</p>
+	<p>
+		Username: <span th:text="${userName}"></span>
+	</p>
+
+
+</body>
+</html>
