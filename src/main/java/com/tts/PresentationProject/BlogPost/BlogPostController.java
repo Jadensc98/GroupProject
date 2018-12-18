@@ -80,7 +80,7 @@ public class BlogPostController {
 		 public String createPost(BlogPost blogPost, Model model ){
 					BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
 					model.addAttribute("name",post.getName());
-					model.addAttribute("place",post.getWhere());
+					model.addAttribute("place",post.getPlace());
 					model.addAttribute("story",post.getStory());
 					model.addAttribute("updateDttm",post.getUpdateDttm());
 							return "blogposts/newpost.html";
