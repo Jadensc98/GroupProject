@@ -1,0 +1,29 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>HealthCare Plus</title>
+<meta http-equiv="Content-Type" content="text/html" charset="UTF-8" />
+<!-- Latest compiled and minified CSS -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+    </head>
+    <body>
+    
+    <table>
+				<tr th:each="blogPost: ${blogposts}">
+                		<td th:text="${blogPost.name}" />
+               			<td th:text="${blogPost.place}"/>
+               			<td th:text="${blogPost.story}"/>
+               			<td th:text="${blogPost.updateDttm}"/> 
+               		               			            
+                </tr>
+			</table>
+    </body>
+    </html>
+    
+    
+    
+    </body>

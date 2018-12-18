@@ -87,7 +87,16 @@ public class BlogPostController {
 		ModelAndView mv = new ModelAndView("blogposts/posts.html");
 		return mv;
 	}
+	@GetMapping("/postlists")
+	public String post_list(Model model) {
+		model.addAttribute("blogposts",blogPostRepository.findAll());
+		return "blogposts/postlist.html";
+	}
+	@GetMapping("/contactus")
+	public String contact() {
 		
+		return "blogposts/contactus.html";
+	}
 		
 							
 		//shows the form for editing a blog post

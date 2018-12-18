@@ -4,14 +4,22 @@
 <head>
 <title>Traveler Information</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+<link rel="stylesheet" href="/css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
 </head>
 <body>
-	<h1>Welcome</h1>
+ <a class="site-logo" href="index.html"><img src="https://www.freeiconspng.com/uploads/-earth-find-flight-fly-globe-map-travel-icon--icon-search-engine-4.png" alt="Homepage"></a>
+	
+	<div class="container">
+	
 	<h3>Here is the information We know about
 		you:</h3>
+		
 
 	<p>
-		First Name: <span th:text="${Name}"></span>
+		First Name: <span th:text="${name}"></span>
 	</p>
 	<p>
 		Place: <span th:text="${place}"></span>
@@ -22,6 +30,10 @@
 	<p>
 		Date: <span th:text="${updateDttm}"></span>
 	</p>
+	
+	</div>
+	
+	
 	<a class= "btn btn-primary" th:href="@{/}">Back To Homepage</a>
 
 </body>
