@@ -4,14 +4,18 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tts.PresentationProject.BlogPost.BlogPostRepository;
+
 import com.tts.PresentationProject.BlogPost.BlogPost;
 
 @Controller
@@ -19,6 +23,9 @@ public class BlogPostController {
 	
 	@Autowired
 	private BlogPostRepository blogPostRepository;
+	
+	@Autowired
+	private UserRepository UserRepository;
 	
 	//introduction page 
 		@GetMapping("/")
@@ -73,6 +80,28 @@ public class BlogPostController {
 			blogPostRepository.deleteById(id);
 			return mv;
 		}
+		
+		@GetMapping("/Signup")
+		public String signup(User user) {
+			return "blogposts/Signup.html";
+		}
+		
+		@GetMapping("/Result")
+		public String result(User user) {
+			return "User/Result.html";
+		}
+		
+		@RequestMapping(value = "/Signup", method = RequestMethod.POST) 
+		@PostMapping(value="User/Signup") 
+		public String addNewUser(User user, Model model) {
+		UserRepository.save(new User(user.getUserName(), user.getPassWord()));
+		model.addAttribute("userName", user.getUserName());
+		model.addAttribute("passWord", user.getPassWord());
+			return "User/Result";
+			
+		}
+		
+		
 		
 		
 }
