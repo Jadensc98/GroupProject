@@ -4,14 +4,12 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tts.PresentationProject.BlogPost.BlogPostRepository;
@@ -27,7 +25,7 @@ public class BlogPostController {
 	private BlogPostRepository blogPostRepository;
 	
 	@Autowired
-	private UserRepository UserRepository;
+	private UserRepository userRepository;
 	
 	//introduction page 
 		@GetMapping("/")
@@ -41,10 +39,12 @@ public class BlogPostController {
 			return "blogposts/posts";
 		}
 		
-		@GetMapping("/create")
-		public String createpost(BlogPost blogPost) {
-			return "blogposts/create_post";
-		}
+		@GetMapping("/blogpost/new")
+	    public ModelAndView newPostForm(BlogPost blogPost) {
+	        ModelAndView mv = new ModelAndView("blogpost/create_post");
+	        return mv;
+			
+	    }
 		
 		//shows the form for editing a blog post
 		@GetMapping("/blog_posts/edit/{id}")
@@ -81,26 +81,21 @@ public class BlogPostController {
 			return "blogposts/result";
 		}
 		
-		@RequestMapping(value = "blogposts/create_account", method = RequestMethod.POST) 
-		@PostMapping(value="blogposts/create_account") 
-		public String addNewUser(User user, Model model) {
-		UserRepository.save(new User(user.getUserName(), user.getPassWord()));
-		model.addAttribute("userName", user.getUserName());
-		model.addAttribute("passWord", user.getPassWord());
-			return "blogposts/result";
-			
-		}
+		@PostMapping("/blogpost/newuser")
+	    public ModelAndView createUser(User user) {
+			ModelAndView mv = new ModelAndView("blogpost/userResult");
+			User account = userRepository.save(user);
+	        mv.addObject("user", account);
+	        return mv;
+	    }
 		
-		@RequestMapping(value = "blogposts/create_post", method = RequestMethod.POST) 
-		@PostMapping(value="blogposts/create_post") 
-		public String addNewPost(BlogPost blogPost, Model model) {
-		BlogPostRepository.save(new BlogPost(blogPost.getName(), blogPost.getWhere(), blogPost.getStory()));
-		model.addAttribute("Name", blogPost.getName());
-		model.addAttribute("Where", blogPost.getWhere());
-		model.addAttribute("Story", blogPost.getStory());
-			return "/";
-			
-		}
+		@PostMapping("/blogpost/new")
+	    public ModelAndView createPost(BlogPost blogPost) {
+			ModelAndView mv = new ModelAndView("blogpost/result");
+			BlogPost post = blogPostRepository.save(blogPost);
+	        mv.addObject("post", post);
+	        return mv;
+	    }
 		
 		
 		

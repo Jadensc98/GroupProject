@@ -9,20 +9,20 @@
 	<h1>Welcome</h1>
 	<h3>Here is the information We know about
 		you:</h3>
-
-	<p>
-		First Name: <span th:text="${firstName}"></span>
-	</p>
-	<p>
-		Last Name: <span th:text="${lastName}"></span>
-	</p>
-	<p>
-		Email: <span th:text="${email}"></span>
-	</p>
-	<p>
-		Username: <span th:text="${userName}"></span>
-	</p>
-
-
+	<h3>Blog Post Form</h3>
+	<p>Thank you for your submisssion!</p>
+	<h4>Blog Post:</h4>
+	<p th:text="${name}" />
+	<p th:text="${where}" />
+	<p th:text="${story}" />
+	<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
+<a th:href="@{/blogposts/create_post}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
+<form action="#" th:action="@{'/blogposts/{id}'(id=${blogPost.id})}" th:method="delete"
+                      class="form-horizontal">
+        <div class="form-group">
+            <input type="hidden" name="_method" value="delete"/>
+        <button type="submit" class="btn btn-danger btn-block" th:text="Delete">Delete</button>
+    </div>
+</form>
 </body>
 </html>

@@ -1,0 +1,17 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Traveler Information</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome</h1>
+	<h3>Here is the information We know about
+		you:</h3>
+	<p>Thank you for your submisssion!</p>
+	<h4>Your username:</h4>
+	<p th:text="${userName}" />
+	<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
+</body>
+</html>
