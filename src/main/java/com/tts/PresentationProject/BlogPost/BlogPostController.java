@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tts.PresentationProject.BlogPost.BlogPostRepository;
-
+import com.tts.PresentationProject.BlogPost.User;
+import com.tts.PresentationProject.BlogPost.UserRepository;
 import com.tts.PresentationProject.BlogPost.BlogPost;
 
 @Controller
+@RequestMapping
 public class BlogPostController {
 	
 	@Autowired
@@ -39,20 +41,9 @@ public class BlogPostController {
 			return "blogposts/posts";
 		}
 		
-		//handles the saving of the new blog post
-		@PostMapping("/blog_posts/new")
-		public ModelAndView createPost(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/result");
-			BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(), blogPost.getStory(), blogPost.getWhere()));
-			mv.addObject("post", post);
-			return mv;
-		}
-		
-		//shows the form for creating a blog post
-		@GetMapping("/blog_posts/new")
-		public ModelAndView newPostForm(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/create_post");
-			return mv;
+		@GetMapping("/create")
+		public String createpost(BlogPost blogPost) {
+			return "blogposts/create_post";
 		}
 		
 		//shows the form for editing a blog post
@@ -82,12 +73,12 @@ public class BlogPostController {
 		
 		@GetMapping("/create_account")
 		public String signup(User user) {
-			return "blogposts/create_account.html";
+			return "blogposts/create_account";
 		}
 		
 		@GetMapping("/Result")
 		public String result(User user) {
-			return "blogposts/result.html";
+			return "blogposts/result";
 		}
 		
 		@RequestMapping(value = "blogposts/create_account", method = RequestMethod.POST) 
@@ -96,7 +87,18 @@ public class BlogPostController {
 		UserRepository.save(new User(user.getUserName(), user.getPassWord()));
 		model.addAttribute("userName", user.getUserName());
 		model.addAttribute("passWord", user.getPassWord());
-			return "blogposts/Result";
+			return "blogposts/result";
+			
+		}
+		
+		@RequestMapping(value = "blogposts/create_post", method = RequestMethod.POST) 
+		@PostMapping(value="blogposts/create_post") 
+		public String addNewPost(BlogPost blogPost, Model model) {
+		BlogPostRepository.save(new BlogPost(blogPost.getName(), blogPost.getWhere(), blogPost.getStory()));
+		model.addAttribute("Name", blogPost.getName());
+		model.addAttribute("Where", blogPost.getWhere());
+		model.addAttribute("Story", blogPost.getStory());
+			return "/";
 			
 		}
 		
