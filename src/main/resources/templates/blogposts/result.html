@@ -16,7 +16,7 @@
 	<p th:text="${where}" />
 	<p th:text="${story}" />
 	<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
-<a th:href="@{/blogposts/create_post}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
+<a th:href="@{/create_post}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
 <form action="#" th:action="@{'/blogposts/{id}'(id=${blogPost.id})}" th:method="delete"
                       class="form-horizontal">
         <div class="form-group">
