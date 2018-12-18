@@ -41,7 +41,7 @@ public class User {
 		}
 		@Override
 		public String toString() {
-			return "UserRepository [userName=" + userName + ", passWord=" + passWord + "]";
+			return "UserRepository [id=" + id + ", userName=" + userName + ", passWord=" + passWord + "]";
 		}
 		
 }

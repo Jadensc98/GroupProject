@@ -10,7 +10,7 @@
    <h3>Please Write Your Blogs Below</h3>
    
    <p>Please Use The Form Below To Write The Blogs </p>
-  <form action="#" th:action="@{/blogposts/result}" th:object="${BlogPost}" method="post">
+  <form action="#" th:action="@{/create_post}" th:object="${blogPost}" method="post">
     <table>
 	<tr>
             <td>Name:</td>
@@ -18,7 +18,7 @@
 	</tr>
 	<tr>
 	    <td>City:</td>
-	    <td><input type="text" th:field="*{where}" /></td>
+	    <td><input type="text" th:field="*{place}" /></td>
 	</tr>
 	<tr>
     	    <td>State:</td>

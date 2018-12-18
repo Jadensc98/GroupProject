@@ -38,12 +38,11 @@ public class BlogPostController {
 			return "blogposts/posts";
 		}
 		
-		@GetMapping("/blogpost/new")
-	    public ModelAndView newPostForm(BlogPost blogPost) {
-	        ModelAndView mv = new ModelAndView("blogpost/create_post");
-	        return mv;
-			
-	    }
+		@GetMapping("view_account")
+		public String posts(User user) {
+			return "blogposts/view_account";
+		}
+	
 		
 		//shows the form for editing a blog post
 		@GetMapping("/blog_posts/edit/{id}")
@@ -63,7 +62,7 @@ public class BlogPostController {
 		}
 		
 		//shows the form for editing a blog post
-		@DeleteMapping("/blog_posts/delete/{id}")
+		@DeleteMapping("/blogposts/delete/{id}")
 		public ModelAndView deletepost(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("redirect:/");
 			blogPostRepository.deleteById(id);
@@ -71,19 +70,19 @@ public class BlogPostController {
 		}
 		
 		//shows the form for creating a blog post
-		@GetMapping("/newpost")
+		@GetMapping("/create_post")
 		public String newPost(BlogPost blogPost) {
-			return "blogposts/create_post.html";
+			return "blogposts/create_post";
 					
 		}
-		@PostMapping("/newpost")
+		@PostMapping("blogposts/create_post")
 		 public String createPost(BlogPost blogPost, Model model ){
 					BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
 					model.addAttribute("name",post.getName());
-					model.addAttribute("place",post.getWhere());
+					model.addAttribute("place",post.getPlace());
 					model.addAttribute("story",post.getStory());
 					model.addAttribute("updateDttm",post.getUpdateDttm());
-							return "blogposts/newpost.html";
+							return "blogposts/result.html";
 					
 				}
 		
@@ -93,23 +92,15 @@ public class BlogPostController {
 		}
 		
 		@GetMapping("/Result")
-		public String result(User user) {
+		public String result(BlogPost blogPost) {
 			return "blogposts/result";
 		}
 		
-		@PostMapping("/blogpost/newuser")
+		@PostMapping("/blogposts/newuser")
 	    public ModelAndView createUser(User user) {
-			ModelAndView mv = new ModelAndView("blogpost/userResult");
+			ModelAndView mv = new ModelAndView("blogposts/userResult");
 			User account = userRepository.save(user);
 	        mv.addObject("user", account);
-	        return mv;
-	    }
-		
-		@PostMapping("/blogpost/new")
-	    public ModelAndView createPost(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogpost/result");
-			BlogPost post = blogPostRepository.save(blogPost);
-	        mv.addObject("post", post);
 	        return mv;
 	    }
 		
