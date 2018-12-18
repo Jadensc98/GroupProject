@@ -1,17 +1,38 @@
 <!DOCTYPE>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" class="no-js" lang="en">
 
 <head>
 <title>Create Your Account</title>
-<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>TravelBlog</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
 </head>
 <body>
-	<h1>Welcome Traveler</h1>
+	<h1 style="color:white">Welcome Traveler</h1>
 
-	<p>Please Use The Form Below To Create An Account</p>
+	<p style="color:darkred">Please Use The Form Below To Create An Account</p>
 
 	<div class="container">
-		<h1>Create a New Account</h1>
+		<h1 style="color:white">Create a New Account</h1>
  		<form action="#" th:action="@{/create_account}" th:object="${user}" method="post">
  		
  		<div class="form-group">
