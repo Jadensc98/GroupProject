@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tts.PresentationProject.BlogPost.BlogPostRepository;
@@ -18,7 +17,6 @@ import com.tts.PresentationProject.BlogPost.UserRepository;
 import com.tts.PresentationProject.BlogPost.BlogPost;
 
 @Controller
-@RequestMapping
 public class BlogPostController {
 	
 	@Autowired
