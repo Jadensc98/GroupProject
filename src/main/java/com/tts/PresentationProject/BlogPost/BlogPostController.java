@@ -4,6 +4,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -68,6 +69,23 @@ public class BlogPostController {
 			blogPostRepository.deleteById(id);
 			return mv;
 		}
+		
+		//shows the form for creating a blog post
+		@GetMapping("/newpost")
+		public String newPost(BlogPost blogPost) {
+			return "blogposts/create_post.html";
+					
+		}
+		@PostMapping("/newpost")
+		 public String createPost(BlogPost blogPost, Model model ){
+					BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
+					model.addAttribute("name",post.getName());
+					model.addAttribute("place",post.getWhere());
+					model.addAttribute("story",post.getStory());
+					model.addAttribute("updateDttm",post.getUpdateDttm());
+							return "blogposts/newpost.html";
+					
+				}
 		
 		@GetMapping("/create_account")
 		public String signup(User user) {
