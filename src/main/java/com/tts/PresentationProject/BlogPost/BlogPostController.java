@@ -34,10 +34,9 @@ public class BlogPostController {
 			return mv;
 		}
 		
-		@GetMapping("/posts")
-		public ModelAndView posts(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/posts.html");
-			return mv;
+		@GetMapping("posts")
+		public String posts(BlogPost blogPost) {
+			return "blogposts/posts";
 		}
 		
 		//handles the saving of the new blog post
@@ -81,23 +80,23 @@ public class BlogPostController {
 			return mv;
 		}
 		
-		@GetMapping("/Signup")
+		@GetMapping("/create_account")
 		public String signup(User user) {
-			return "blogposts/Signup.html";
+			return "blogposts/create_account.html";
 		}
 		
 		@GetMapping("/Result")
 		public String result(User user) {
-			return "User/Result.html";
+			return "blogposts/result.html";
 		}
 		
-		@RequestMapping(value = "/Signup", method = RequestMethod.POST) 
-		@PostMapping(value="User/Signup") 
+		@RequestMapping(value = "blogposts/create_account", method = RequestMethod.POST) 
+		@PostMapping(value="blogposts/create_account") 
 		public String addNewUser(User user, Model model) {
 		UserRepository.save(new User(user.getUserName(), user.getPassWord()));
 		model.addAttribute("userName", user.getUserName());
 		model.addAttribute("passWord", user.getPassWord());
-			return "User/Result";
+			return "blogposts/Result";
 			
 		}
 		
