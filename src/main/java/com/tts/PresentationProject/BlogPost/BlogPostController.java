@@ -44,10 +44,25 @@ public class BlogPostController {
 //		return mv;
 		
 	}
+	//shows the form for creating a blog post
+	@GetMapping("/newpost")
+	public String newPostForm(BlogPost blogPost) {
+		return "blogposts/create_post.html";
+				
+	}
+	@PostMapping("/newpost")
+	 public String createPost(BlogPost blogPost,Model model ){
+				BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
+				model.addAttribute("name",post.getName());
+				model.addAttribute("place",post.getPlace());
+				model.addAttribute("story",post.getStory());
+				model.addAttribute("updateDttm",post.getUpdateDttm());
+						return "blogposts/newpost.html";
+				
+			}		
 	@GetMapping("/comments")
-	public ModelAndView new_comment(Comments comments) {
-		ModelAndView mv = new ModelAndView("blogposts/create_comment");
-		return mv;
+	public String new_comment(Comments comments) {
+			return "blogpots/create_comment.html";
 	}
 	@PostMapping("/comments")
 	public String view_comment(Comments comments,Model model) {
@@ -74,27 +89,7 @@ public class BlogPostController {
 	}
 		
 		
-		
-		
-		
-		//handles the saving of the new blog post
-	
-		@PostMapping("/blog_posts/new")
-		public ModelAndView createPost(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/result");
-			BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(), blogPost.getStory(), blogPost.getPlace(), new Date()));
-			mv.addObject("post", post);
-			return mv;
-		}
-		
-		//shows the form for creating a blog post
-		@GetMapping("/newpost")
-		public ModelAndView newPostForm(BlogPost blogPost) {
-			ModelAndView mv = new ModelAndView("blogposts/create_post");
-			return mv;
-		}
-		
-		
+							
 		//shows the form for editing a blog post
 		@GetMapping("/blog_posts/edit/{id}")
 		public ModelAndView updatePostForm(@PathVariable("id") long id) {

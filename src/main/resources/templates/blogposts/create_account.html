@@ -12,7 +12,7 @@
 
 	<div class="container">
 		<h1>Create a New Account</h1>
- 		<form action="#" th:action="@{/blogposts/newuser}" th:object="${user}" method="post">
+ 		<form action="#" th:action="@{/newuser}" th:object="${user}" method="post">
  		
  		<div class="form-group">
  			<input type="text" class="form-control" placeholder="Your First Name" th:field="*{firstName}" />
@@ -34,13 +34,14 @@
  		<div class="form-group">
  			<input type="text" class ="form-control" placeholder="Date Of Creation" th:field="*{updateDttm}" />
  		</div>
-		</form>
  		<button class="btn btn-primary">Submit Your Information</button>
+		</form>
+ 		
 
 		<a class= "btn btn-primary" th:href="@{/}">Back To Homepage</a>
 	</div>
 
->>>>>>> Jadens_stuff
+
 
 </body>
 </html>

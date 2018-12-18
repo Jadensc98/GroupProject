@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Create Your Account</title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+</head>
+<body>
+	<h1>Welcome Traveler</h1>
+
+	<p>Please Use The Form Below To Add A Comment</p>
+
+	<div class="container">
+		<h1>Add a New Comment</h1>
+ 		<form action="#" th:action="@{/comments}" th:object="${comments}" method="post">
+ 		
+ 		<div class="form-group">
+ 			<input type="text" class="form-control" placeholder="Your Comment" th:field="*{commentPost}" />
+ 		</div>
+ 		
+ 		<div class="form-group">
+ 			<input type="text" class ="form-control" placeholder="Date Of Creation" th:field="*{updateDttm}" />
+ 		</div>
+ 		<button class="btn btn-primary">Submit Your Comment</button>
+		</form>
+ 		
+
+		<a class= "btn btn-primary" th:href="@{/}">Back To Homepage</a>
+	</div>
+
+
+
+</body>
+</html>

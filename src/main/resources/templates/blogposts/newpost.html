@@ -11,13 +11,18 @@
 		you:</h3>
 
 	<p>
-		First Name: <span th:text="${commentPost}"></span>
+		First Name: <span th:text="${Name}"></span>
+	</p>
+	<p>
+		Place: <span th:text="${place}"></span>
+	</p>
+	<p>
+		Story: <span th:text="${story}"></span>
 	</p>
 	<p>
 		Date: <span th:text="${updateDttm}"></span>
 	</p>
-	
-
+	<a class= "btn btn-primary" th:href="@{/}">Back To Homepage</a>
 
 </body>
 </html>

@@ -1,10 +1,15 @@
 package com.tts.PresentationProject.BlogPost;
 
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -13,8 +18,13 @@ public class BlogPost {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String name;
-	private String where;
+	private String place;
 	private String story;
+	private Long userId;
+	
+	@Column
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date updateDttm;
 	
 
 
@@ -22,10 +32,11 @@ public BlogPost() {
 	
 }
 
-public BlogPost(String name, String where, String story) {
+public BlogPost(String name, String place, String story,Date updateDttm) {
 	this.name = name;
-	this.where = where;
+	this.place = place;
 	this.story = story;
+	this.updateDttm = updateDttm;
 }
 
 
@@ -39,16 +50,6 @@ public void setName(String name) {
 }
 
 
-public String getWhere() {
-	return where;
-}
-
-
-public void setWhere(String where) {
-	this.where = where;
-}
-
-
 public String getStory() {
 	return story;
 }
@@ -57,10 +58,38 @@ public String getStory() {
 public void setStory(String story) {
 	this.story = story;
 }
+public String getPlace() {
+	return place;
+}
 
+public void setPlace(String place) {
+	this.place = place;
+}
+
+
+public Long getUserId() {
+	return userId;
+}
+
+public void setUserId(Long userId) {
+	this.userId = userId;
+}
+
+
+
+public Date getUpdateDttm() {
+	return updateDttm;
+}
+
+public void setUpdateDttm(Date updateDttm) {
+	this.updateDttm = updateDttm;
+}
 
 @Override
 public String toString() {
-	return "BlogPost [id=" + id + ", name=" + name + ", where=" + where + ", story=" + story + "]";
+	return "BlogPost [id=" + id + ", name=" + name + ", place=" + place + ", story=" + story + ", userId=" + userId
+			+ ", updateDttm=" + updateDttm + "]";
 }
+
+
 }
