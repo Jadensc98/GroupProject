@@ -71,11 +71,11 @@ public class BlogPostController {
 		
 		//shows the form for creating a blog post
 		@GetMapping("/create_post")
-		public String newPost(BlogPost blogPost) {
-			return "blogposts/create_post";
-					
+		public ModelAndView create_post(BlogPost blogPost) {
+			ModelAndView mv = new ModelAndView("blogposts/create_post");
+			return mv;
 		}
-		@PostMapping("blogposts/create_post")
+		@PostMapping(value= "/create_post")
 		 public String createPost(BlogPost blogPost, Model model ){
 					BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
 					model.addAttribute("name",post.getName());
@@ -92,9 +92,11 @@ public class BlogPostController {
 			return mv;
 		}
 		
-		@GetMapping("/Result")
-		public String result(BlogPost blogPost) {
-			return "blogposts/result";
+		@GetMapping("/result")
+		public ModelAndView result(BlogPost blogPost) {
+			ModelAndView mv = new ModelAndView("blogposts/result");
+			mv.addObject("newPost", blogPost);
+			return mv;
 		}
 		
 		@GetMapping("/userResult")
@@ -104,17 +106,10 @@ public class BlogPostController {
 			return mv;
 		}
 		
-		
-//				@PostMapping("/blogposts/create_account")
-//				public ModelAndView newUser(User user) {
-//					ModelAndView mv = new ModelAndView("blogposts/userResult");
-//					User newUser = userRepository.save(new User(user.getPassWord(), user.getUserName()));
-//					mv.addObject("newUser", newUser);
-//					return mv;
-//				}
+	
 		
 		@PostMapping(value="/create_account") 
-		public String addNewSubscriber(User user, Model model) {
+		public String addNewUser(User user, Model model) {
 		userRepository.save(new User(user.getUserName(), user.getPassWord()));
 		model.addAttribute("userName", user.getUserName());
 		model.addAttribute("passWord", user.getPassWord());
