@@ -2,34 +2,70 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>TravelBlog</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
   <title>Create Your Own Blog  </title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
 </head>
  <body>
-   <h1>Welcome Traveler</h1>
-   <h3>Please Write Your Blogs Below</h3>
-   
-   <p>Please Use The Form Below To Write The Blogs </p>
+   <h1 style="color:white">Welcome Traveler</h1>
+   <h3 style="color:white">Please Write Your Blogs Below</h3>
   <form action="#" th:action="@{/create_post}" th:object="${blogPost}" method="post">
     <table>
 	<tr>
-            <td>Name:</td>
-	    <td><input type="text" th:field="*{name}" /></td>
+            <td style="color:white">Name:</td>
+	    <td><input type="text" th:field="*{name}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"/></td>
 	</tr>
 	<tr>
-	    <td>Where?:</td>
-	    <td><input type="text" th:field="*{place}" /></td>
+	    <td style="color:white">Where?:</td>
+	    <td><input type="text" th:field="*{place}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"/></td>
 	</tr>
 	<tr>
-    	    <td>Your Story:</td>
-	    <td><input type="text" th:field="*{story}" /></td>
+    	    <td style="color:white">Your Story:</td>
+	    <td><input type="text" th:field="*{story}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"/></td>
 	</tr>
 	<tr>
 	    <td><button type="submit">Submit Your Blog</button></td>
 	</tr>
     </table>
 </form>
-
 
  </body>
 </html>

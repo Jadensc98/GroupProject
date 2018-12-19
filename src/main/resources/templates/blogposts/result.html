@@ -2,20 +2,59 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>TravelBlog</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
 <title>Traveler Information</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-	<h1>Welcome</h1>
-	<h3>Here is the information We know about
+	<h1 style="color:white">Welcome</h1>
+	<h3 style="color:white">Here is the information We know about
 		you:</h3>
-	<h3>Blog Post Form</h3>
-	<p>Thank you for your submisssion!</p>
+	<h3 style="color:white">Blog Post Form</h3>
+	<p style="color:white">Thank you for your submisssion!</p>
 	<h4>Blog Post:</h4>
-	<p th:text="${name}" />
-	<p th:text="${where}" />
-	<p th:text="${story}" />
+	<p th:text="${name}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;" />
+	<p th:text="${place}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"/>
+	<p th:text="${story}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"/>
 	<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
-<a th:href="@{/blogposts/create_post}"><button class= "btn btn-primary">Submit a New Blog Post</button></a>
+<a th:href="@{/create_post}"><button class= "btn btn-primary">Create new post</button></a>
 </body>
 </html>

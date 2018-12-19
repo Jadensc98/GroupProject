@@ -2,16 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
+
+ <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>TravelBlog</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- script
+    ================================================== -->
+    <script src="js/modernizr.js"></script>
+    <script src="js/pace.min.js"></script>
+
 <title>Traveler Information</title>
 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
 </head>
 <body>
-	<h1>Welcome</h1>
-	<h3>Here is the information We know about
+	<h1 style="color:white">Welcome</h1>
+	<h3 style="color:white">Here is the information We know about
 		you:</h3>
 
 	<p>
-		User Name: <span th:text="${userName}"></span>
+		User Name: <span th:text="${userName}" style="width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;"></span>
 	</p>
 	
 	
