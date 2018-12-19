@@ -87,6 +87,7 @@ public class BlogPostController {
 		ModelAndView mv = new ModelAndView("blogposts/posts.html");
 		return mv;
 	}
+	//Shows the list of posts
 	@GetMapping("/postlists")
 	public String post_list(Model model) {
 		model.addAttribute("blogposts",blogPostRepository.findAll());
