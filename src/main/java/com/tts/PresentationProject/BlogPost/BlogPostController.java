@@ -26,7 +26,7 @@ public class BlogPostController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	//introduction page 
+		//introduction page 
 		@GetMapping("/")
 		public ModelAndView index(User user) {
 			ModelAndView mv = new ModelAndView("blogposts/index.html");
