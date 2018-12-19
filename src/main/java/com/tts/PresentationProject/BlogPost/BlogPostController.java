@@ -28,7 +28,7 @@ public class BlogPostController {
 	
 	//introduction page 
 		@GetMapping("/")
-		public ModelAndView index() {
+		public ModelAndView index(User user) {
 			ModelAndView mv = new ModelAndView("blogposts/index.html");
 			return mv;
 		}
@@ -87,8 +87,9 @@ public class BlogPostController {
 				}
 		
 		@GetMapping("/create_account")
-		public String signup(User user) {
-			return "blogposts/create_account";
+		public ModelAndView signup(User user) {
+			ModelAndView mv = new ModelAndView("blogposts/create_account");
+			return mv;
 		}
 		
 		@GetMapping("/Result")
@@ -96,15 +97,31 @@ public class BlogPostController {
 			return "blogposts/result";
 		}
 		
-		@PostMapping("/blogposts/newuser")
-	    public ModelAndView createUser(User user) {
+		@GetMapping("/userResult")
+		public ModelAndView userResult(User user) {
 			ModelAndView mv = new ModelAndView("blogposts/userResult");
-			User account = userRepository.save(user);
-	        mv.addObject("user", account);
-	        return mv;
-	    }
+			mv.addObject("newUser", user);
+			return mv;
+		}
 		
 		
+//				@PostMapping("/blogposts/create_account")
+//				public ModelAndView newUser(User user) {
+//					ModelAndView mv = new ModelAndView("blogposts/userResult");
+//					User newUser = userRepository.save(new User(user.getPassWord(), user.getUserName()));
+//					mv.addObject("newUser", newUser);
+//					return mv;
+//				}
+		
+		@PostMapping(value="/create_account") 
+		public String addNewSubscriber(User user, Model model) {
+		userRepository.save(new User(user.getUserName(), user.getPassWord()));
+		model.addAttribute("userName", user.getUserName());
+		model.addAttribute("passWord", user.getPassWord());
+		
+			return "blogposts/userResult";
+			
+		}
 		
 		
 }
