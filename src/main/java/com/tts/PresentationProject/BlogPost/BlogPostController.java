@@ -30,6 +30,7 @@ public class BlogPostController {
 		@GetMapping("/")
 		public ModelAndView index(User user) {
 			ModelAndView mv = new ModelAndView("blogposts/index.html");
+			mv.addObject("blogPosts", blogPostRepository.findAll());
 			return mv;
 		}
 		
