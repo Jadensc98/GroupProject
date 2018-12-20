@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -43,10 +43,8 @@
         <nav class="header-nav-wrap">
             <ul class="header-nav">
                 <li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
-                <li><a href="#create_post" title="works">Make A Post</a></li>
-                <li><a href="#create_account" title="blog">Sign Up</a></li>
-                <li><a href="#log_in" title="contact">Log In</a></li>
-                <li><a href="#your_account" title="your_account">Your Account</a></li>
+                <li><a href="create_post" title="works">Make A Post</a></li>
+                <li><a href="create_account" title="blog">Sign Up</a></li>
             </ul>
         </nav>
 
@@ -414,78 +412,29 @@
                 ullamco proident aliquip quis qui voluptate dolore veniam Ut laborum non est in officia.</p>
             </div>
         </div>
-
-        <div class="row blog-content">
-            <div class="col-full">
-
-                <div class="blog-list block-1-2 block-tab-full">
-                    <article class="col-block">
-                                
-                        <div class="blog-date">
-                            <a href="blog-single.html">Date</a>
-                        </div>  
-                        
-                        <h2 class="h01"><a href="blog-single.html">Post 1.</a></h2>
-                        <p>
-                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin molestie malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus nibh..
-                        </p>
-
-                        <div class="blog-cat">
-                                <a href="">User 1</a>
+     <div class="row blog-content">
+                    <div class="row">
+                     <article class="col-block">
+                        <div th:each="blogs : ${blogPosts}">
+                            <div class="col-full">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h2 class="h01"><a th:text="${blogs.name}"></a></h2>
+                                    </div>
+                                    <div class="panel-body">
+                                        <p th:text="${blogs.place}"/></p>
+                                        <p th:text="${blogs.story}" /></p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                         </article>
+                    </div>
+                    </div>
+                 
 
-                        
-                    </article>
-                    <article class="col-block">
-                                
-                        <div class="blog-date">
-                            <a href="">Date</a>
-                        </div>  
-                        
-                        <h2 class="h01"><a href="blog-single.html">Post 2.</a></h2>
-                        <p>
-                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin molestie malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus nibh..
-                        </p>
-
-                        <div class="blog-cat">
-                            <a href="blog.html">User 2</a>
-                        </div>
-
-                        
-                    </article>
-                    <article class="col-block">
-                        
-                        <div class="blog-date">
-                            <a href="blog-single.html">Date</a>
-                        </div>
-
-                        <h2 class="h01"><a href="blog-single.html">Post 3.</a></h2>
-                        <p>
-                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin molestie malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus nibh dolore irure esse Duis nulla sint.
-                        </p>
-
-                        <div class="blog-cat">
-                            <a href="">User 3</a>
-                        </div>
-                    </article>
-                    <article class="col-block">
-                        
-                        <div class="blog-date">
-                            <a href="blog-single.html">Date</a>
-                        </div>    
-                        <h2 class="h01"><a href="blog-single.html">Post 4.</a></h2>
-                        <p>
-                        Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Pellentesque in ipsum id orci porta dapibus. Donec sollicitudin molestie malesuada. Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus. Cras ultricies ligula sed magna dictum porta. Sed porttitor lectus nibh.
-                        </p>
-
-                        <div class="blog-cat">
-                            <a href="">User 4</a>
-                        </div>
-                    </article>
-                </div> <!-- end blog-list -->
-
-            </div> <!-- end col-full -->
-        </div> <!-- end blog-content -->
+        
+   
 
     </section> <!-- end s-blog -->
 

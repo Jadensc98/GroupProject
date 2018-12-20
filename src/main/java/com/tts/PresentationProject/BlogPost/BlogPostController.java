@@ -35,14 +35,17 @@ public class BlogPostController {
 	
 		//introduction page 
 		@GetMapping("/")
-		public ModelAndView index(User user) {
+		public ModelAndView index(BlogPost blogPost) {
 			ModelAndView mv = new ModelAndView("blogposts/index.html");
+			mv.addObject("blogPosts", blogPostRepository.findAll());
 			return mv;
 		}
 		
 		@GetMapping("posts")
-		public String posts(BlogPost blogPost) {
-			return "blogposts/posts";
+		public ModelAndView posts(BlogPost blogPost) {
+			ModelAndView mv = new ModelAndView("blogposts/posts");
+			mv.addObject("blogPosts", blogPostRepository.findAll());
+			return mv;
 		}
 		
 		@GetMapping("view_account")
@@ -53,8 +56,8 @@ public class BlogPostController {
 		
 		//shows the form for editing a blog post
 
-	       @GetMapping("/blogposts/edit_post/{id}")
-	       public ModelAndView updatePostForm(@PathVariable("id") long id) {
+	     @GetMapping("/blogposts/edit_post/{id}")
+	     public ModelAndView updatePostForm(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("blogposts/edit_post");
 			Optional<BlogPost> post = blogPostRepository.findById(id);
 			mv.addObject("blogPost", post);
@@ -72,7 +75,7 @@ public class BlogPostController {
 		
 
 //		shows the form for editing a blog post
-		@DeleteMapping("/blog_posts/delete/{id}")
+		@DeleteMapping("/blogposts/delete/{id}")
 		public ModelAndView deletepost(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("redirect:/");
 			blogPostRepository.deleteById(id);
@@ -86,6 +89,8 @@ public class BlogPostController {
 			ModelAndView mv = new ModelAndView("blogposts/create_post");
 			return mv;
 		}
+		
+		
 		@PostMapping(value= "/create_post")
 		 public String createPost(BlogPost blogPost, Model model ){
 					BlogPost post = blogPostRepository.save(new BlogPost(blogPost.getName(),blogPost.getPlace(),blogPost.getStory(),blogPost.getUpdateDttm()));
@@ -93,6 +98,7 @@ public class BlogPostController {
 					model.addAttribute("place",post.getPlace());
 					model.addAttribute("story",post.getStory());
 					model.addAttribute("updateDttm",post.getUpdateDttm());
+					model.addAttribute("postId", post.getId());
 							return "blogposts/result.html";
 					
 				}
