@@ -28,7 +28,7 @@ public class BlogPostController {
 	
 		//introduction page 
 		@GetMapping("/")
-		public ModelAndView index(User user) {
+		public ModelAndView index() {
 			ModelAndView mv = new ModelAndView("blogposts/index.html");
 			return mv;
 		}
