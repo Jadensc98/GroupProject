@@ -8,7 +8,7 @@
 		<div class="container">
 			<h1>Edit Blog Post</h1>
 <!--Update th action and th object according to what's pushed to branch later-->
-	 		<form action="#" th:action="@{/edit_post}" th:object="${blogPost}" th:method="put">
+	 		<form action="#" th:action="@{/blog_posts/edit}" th:object="${blogPost}" th:method="put">
 	 		<input type="hidden" th:field="*{id}" />
 	 		<div class="form-group">
 	 			<input type="text" class="form-control" placeholder="Name..." th:field="*{name}" />
