@@ -56,6 +56,8 @@
   box-sizing: border-box;"/>
 	<a th:href="@{/}"><button class="btn btn-success">Back To Home Page</button></a>
 <a th:href="@{/create_post}"><button class= "btn btn-primary">Create new post</button></a>
-
+<form action="#" th:action="@{'/blog_posts/delete/{id}'(id=${blogPost.id})}" th:method="delete"><button type="submit">Delete Post</button>
+</form>
+<a th:href="@{'/blogposts/edit_post/{id}'(id=${blogPost.id})}"><button>Edit Post</button></a>
 </body>
 </html>

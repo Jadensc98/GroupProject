@@ -81,8 +81,8 @@ public Date getUpdateDttm() {
 	return updateDttm;
 }
 
-public void setUpdateDttm(Date updateDttm) {
-	this.updateDttm = updateDttm;
+public void setUpdateDttm(java.util.Date date) {
+	this.updateDttm = (Date) date;
 }
 
 @Override

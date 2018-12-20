@@ -1,22 +1,29 @@
 package com.tts.PresentationProject.BlogPost;
 
+import java.util.Date;
 import java.util.Optional;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.tts.PresentationProject.BlogPost.BlogPostRepository;
 import com.tts.PresentationProject.BlogPost.User;
 import com.tts.PresentationProject.BlogPost.UserRepository;
 import com.tts.PresentationProject.BlogPost.BlogPost;
-
+@RequestMapping
 @Controller
 public class BlogPostController {
 	
@@ -45,29 +52,33 @@ public class BlogPostController {
 	
 		
 		//shows the form for editing a blog post
-		@GetMapping("/blog_posts/edit/{id}")
-		public ModelAndView updatePostForm(@PathVariable("id") long id) {
+		
+	       @GetMapping("/blogposts/edit_post/{id}")
+	       public ModelAndView updatePostForm(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("blogposts/edit_post");
 			Optional<BlogPost> post = blogPostRepository.findById(id);
 			mv.addObject("blogPost", post);
-			return mv;
-		}
+	            return mv;
+	        }
 		
 		//saves the edits to the blog post
-		@PutMapping("/blog_posts/edit")
+		
+		@PutMapping("/blogposts/edit_post")
 		public ModelAndView updatePost(BlogPost blogPost) {
 			ModelAndView mv = new ModelAndView("redirect:/");
 			blogPostRepository.save(blogPost);
 			return mv;
 		}
 		
-		//shows the form for editing a blog post
-		@DeleteMapping("/blogposts/delete/{id}")
+
+//		shows the form for editing a blog post
+		@DeleteMapping("/blog_posts/delete/{id}")
 		public ModelAndView deletepost(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("redirect:/");
 			blogPostRepository.deleteById(id);
 			return mv;
-		}
+		}	
+		
 		
 		//shows the form for creating a blog post
 		@GetMapping("/create_post")
