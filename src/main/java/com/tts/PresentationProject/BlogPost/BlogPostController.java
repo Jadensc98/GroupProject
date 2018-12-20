@@ -52,7 +52,7 @@ public class BlogPostController {
 	
 		
 		//shows the form for editing a blog post
-		
+
 	       @GetMapping("/blogposts/edit_post/{id}")
 	       public ModelAndView updatePostForm(@PathVariable("id") long id) {
 			ModelAndView mv = new ModelAndView("blogposts/edit_post");
@@ -62,7 +62,7 @@ public class BlogPostController {
 	        }
 		
 		//saves the edits to the blog post
-		
+
 		@PutMapping("/blogposts/edit_post")
 		public ModelAndView updatePost(BlogPost blogPost) {
 			ModelAndView mv = new ModelAndView("redirect:/");
